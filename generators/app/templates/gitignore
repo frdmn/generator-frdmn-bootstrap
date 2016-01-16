@@ -29,7 +29,9 @@ node_modules
 #####=== certificate-monitor ===#####
 bower_components
 assets/css/*.css
+<% if (includeModernizr) { %>
 assets/js/modernizr.js
+<% } %>
 assets/js/build.js
 assets/fonts
 assets/images

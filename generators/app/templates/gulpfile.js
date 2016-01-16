@@ -52,16 +52,20 @@ gulp.task('fonts', function () {
 
 // Concat JavaScript
 gulp.task('scripts', function () {
+<% if (includeModernizr) { -%>
   // Copy modernizr from bower_components
   gulp.src([dirs.bower + '/modernizr/modernizr.js'])
       .pipe(gulp.dest(dirs.js + '/'));
+<% } -%>
 
   // Process JavaScript files
   gulp.src([
     dirs.bower + '/jquery/dist/jquery.js',
     dirs.bower + '/bootstrap-sass/assets/javascripts/bootstrap.js',
     dirs.js + '/*.js',
+<% if (includeModernizr) { -%>
     '!' + dirs.js + '/modernizr.js',
+<% } -%>
     '!' + dirs.js + '/build.js'
   ])
   .pipe($.concat('build.js'))
