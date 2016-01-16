@@ -85,25 +85,15 @@ module.exports = generators.Base.extend({
     },
 
     bower: function () {
-
-      var bowerJson = {
-        name: this.inputName,
-        version: this.inputVersion,
-        private: true,
-        ignore: [
-          "node_modules",
-          "bower_components"
-        ],
-        dependencies: {
-          "bootstrap-sass": "bootstrap-sass-official#~3.3.6"
+      this.fs.copyTpl(
+        this.templatePath('bower.json'),
+        this.destinationPath('bower.json'),
+        {
+          inputName: this.inputName,
+          inputVersion: this.inputVersion,
+          includeModernizr: this.includeModernizr
         }
-      };
-
-      if (this.includeModernizr) {
-        bowerJson.dependencies['modernizr'] = '~2.8.1';
-      }
-
-      this.fs.writeJSON('bower.json', bowerJson);
+      );
     },
 
     assets: function () {

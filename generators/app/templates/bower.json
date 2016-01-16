@@ -1,0 +1,13 @@
+{
+  "name": "<%= inputName %>",
+  "version": "<%= inputVersion %>",
+  "private": true,
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.6",
+    "modernizr": "~2.8.1"
+  }
+}
