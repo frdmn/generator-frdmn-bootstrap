@@ -41,8 +41,7 @@
   },
   "repository": "frdmn/generator-frdmn-bootstrap",
   "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
+    "test": "mocha --reporter spec --timeout 3000"
   },
   "license": "MIT"
 }
