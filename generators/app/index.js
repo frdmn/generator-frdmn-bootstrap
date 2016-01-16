@@ -138,21 +138,14 @@ module.exports = generators.Base.extend({
   },
 
   install: function () {
-    // Store 'this' because it's needed in callback function of installDependencies()
-    var saveThis = this;
-    this.installDependencies({
-      bower: true,
-      npm: true,
-      callback: function () {
-        // Run "gulp"
-        saveThis.spawnCommand('gulp');
-      }
-    });
+    this.installDependencies();
   },
 
   end: function () {
     var completeMsg =
-      '\nSucessfully installed ' + chalk.yellow.bold('gulp and bower') + '. Now running ' + chalk.yellow.bold('gulp') + ' to compile the assets:';
+      '\nRun ' +
+      chalk.yellow.bold('gulp') +
+      ' to compile the assets and complete the setup.';
 
     this.log(completeMsg);
     return;
