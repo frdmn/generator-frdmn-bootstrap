@@ -7,9 +7,12 @@
 Please see our [gulpfile](app/templates/gulpfile.js) for up to date information on what we support.
 
 * CSS Autoprefixing
+* Uglify (minify) JavScript
+* Autoprefix to support last 2 versions of current browsers
 * Automagically compile Sass with [libsass](http://libsass.org)
 * Map compiled CSS to source stylesheets with source maps
 * Awesome image optimization
+* Twitter Bootstrap 3.3.6 including example dashboard
 
 *For more information on what this generator can do for you, take a look at the [gulp plugins](app/templates/_package.json) used in our `package.json`.*
 
