@@ -9,11 +9,12 @@ module.exports = generators.Base.extend({
   prompting: function () {
     var done = this.async();
 
-    // Have Yeoman greet the user.
+    // Greet users
     this.log(yosay(
       'Welcome to the perfect ' + chalk.red('generator-frdmn-bootstrap') + ' generator!'
     ));
 
+    // Construct prompts
     var prompts = [{
       type: 'input',
       name: 'inputName',
@@ -38,12 +39,12 @@ module.exports = generators.Base.extend({
     this.prompt(prompts, function (answers) {
       var features = answers.features;
 
+      // Function to determan if certain feature exists
       function hasFeature(feat) {
         return features && features.indexOf(feat) !== -1;
       };
 
-      // manually deal with the response, get back and store the results.
-      // we change a bit this way of doing to automatically do this in the self.prompt() method.
+      // Store answers
       this.includeModernizr = hasFeature('includeModernizr');
       this.inputName = answers.inputName;
       this.inputVersion = answers.inputVersion;
@@ -53,6 +54,7 @@ module.exports = generators.Base.extend({
   },
 
   writing: {
+    // ".gitignore"
     git: function () {
       this.fs.copy(
         this.templatePath('gitignore'),
@@ -63,6 +65,7 @@ module.exports = generators.Base.extend({
       );
     },
 
+    // "gulpfile.js"
     gulpfile: function () {
       this.fs.copyTpl(
         this.templatePath('gulpfile.js'),
@@ -73,6 +76,7 @@ module.exports = generators.Base.extend({
       );
     },
 
+    // "package.json"
     packageJSON: function () {
       this.fs.copyTpl(
         this.templatePath('_package.json'),
@@ -84,6 +88,7 @@ module.exports = generators.Base.extend({
       );
     },
 
+    // "bower.json"
     bower: function () {
       this.fs.copyTpl(
         this.templatePath('bower.json'),
@@ -96,6 +101,7 @@ module.exports = generators.Base.extend({
       );
     },
 
+    // Assets - "app.js", "style.scss", ...
     assets: function () {
       this.fs.copyTpl(
         this.templatePath('assets/js/app.js'),
@@ -113,6 +119,7 @@ module.exports = generators.Base.extend({
       );
     },
 
+    // "index.html"
     indexHTML: function () {
       this.fs.copyTpl(
         this.templatePath('index.html'),
@@ -123,6 +130,7 @@ module.exports = generators.Base.extend({
       );
     },
 
+    // Create necessary directories
     misc: function () {
       mkdirp('assets/images');
       mkdirp('fonts/fonts');
@@ -130,11 +138,13 @@ module.exports = generators.Base.extend({
   },
 
   install: function () {
+    // Store 'this' because it's needed in callback function of installDependencies()
     var saveThis = this;
     this.installDependencies({
       bower: true,
       npm: true,
       callback: function () {
+        // Run "gulp"
         saveThis.spawnCommand('gulp');
       }
     });
