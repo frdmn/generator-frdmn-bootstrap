@@ -1,8 +1,8 @@
 'use strict';
 
-var pngquant = require('imagemin-pngquant'),
-    gulp = require('gulp'),
-    $ = require('gulp-load-plugins')();
+var pngquant = require('imagemin-pngquant');
+var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
 
 // Object with directory paths
 var dirs = {
@@ -45,39 +45,39 @@ gulp.task('styles', function () {
 });
 
 // Copy fonts
-gulp.task('fonts', function() {
+gulp.task('fonts', function () {
   gulp.src([dirs.bower + '/bootstrap-sass/assets/fonts/bootstrap/*'])
     .pipe(gulp.dest(dirs.fonts + '/'));
 });
 
 // Concat JavaScript
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
   // Copy modernizr from bower_components
   gulp.src([dirs.bower + '/modernizr/modernizr.js'])
       .pipe(gulp.dest(dirs.js + '/'));
 
   // Process JavaScript files
   gulp.src([
-      dirs.bower + '/jquery/dist/jquery.js',
-      dirs.bower + '/bootstrap-sass/assets/javascripts/bootstrap.js',
-      dirs.js + '/*.js',
-      '!' + dirs.js + '/modernizr.js',
-      '!' + dirs.js + '/build.js'
-    ])
-    .pipe($.concat('build.js'))
-    .pipe($.uglify())
-    .pipe(gulp.dest(dirs.js + '/'));
+    dirs.bower + '/jquery/dist/jquery.js',
+    dirs.bower + '/bootstrap-sass/assets/javascripts/bootstrap.js',
+    dirs.js + '/*.js',
+    '!' + dirs.js + '/modernizr.js',
+    '!' + dirs.js + '/build.js'
+  ])
+  .pipe($.concat('build.js'))
+  .pipe($.uglify())
+  .pipe(gulp.dest(dirs.js + '/'));
 });
 
 // Optimize images
-gulp.task('imagemin', function() {
+gulp.task('imagemin', function () {
   gulp.src(dirs.images + '/*')
     .pipe($.imagemin(imageminOptions))
     .pipe(gulp.dest(dirs.images));
 });
 
 // Watch task
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch(dirs.css + '/**/*.scss', ['styles:dev']);
   gulp.watch([
     dirs.js + '/*.js',
@@ -90,10 +90,10 @@ gulp.task('clean', function () {
   gulp.src([
     dirs.js + '/build.js',
     dirs.css + '/style.css'
-  ], { read: false })
+  ], {read: false})
     .pipe($.clean());
 });
 
 // Register default and dev task
-gulp.task('default', ['styles', 'fonts', 'scripts', 'imagemin'], function() {});
-gulp.task('dev', ['default', 'watch'], function() {});
+gulp.task('default', ['styles', 'fonts', 'scripts', 'imagemin'], function () {});
+gulp.task('dev', ['default', 'watch'], function () {});
