@@ -1,0 +1,24 @@
+{
+  "name": "certificate-monitor",
+  "version": "1.0.0",
+  "description": "Dashboard to monitor and gather SSL/TLS certificates.",
+  "authors": [
+    "Jonas Friedmann <j@frd.mn>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/frdmn/certificate-monitor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.6",
+    "modernizr": "~2.8.3"
+  }
+}
