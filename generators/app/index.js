@@ -79,7 +79,7 @@ module.exports = generators.Base.extend({
         this.destinationPath('package.json'),
         {
           inputName: this.inputName,
-          inputVersion: this.inputVersion,
+          inputVersion: this.inputVersion
         }
       );
     },
