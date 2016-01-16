@@ -13,7 +13,14 @@ describe('generator-frdmn-bootstrap:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'dummyfile.txt'
+      'assets/css/_example.scss',
+      'assets/css/style.scss',
+      'assets/js/app.js',
+      '.gitignore',
+      'package.json',
+      'bower.json',
+      'gulpfile.js',
+      'index.html'
     ]);
   });
 });
