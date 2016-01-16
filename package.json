@@ -23,7 +23,8 @@
     "yeoman-assert": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "mkdirp": "^0.5.1"
   },
   "repository": "frdmn/generator-frdmn-bootstrap",
   "scripts": {
