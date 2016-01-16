@@ -1,35 +1,37 @@
-# generator-frdmn-bootstrap [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> 
+# frdmn-bootstrap [![Build Status](https://secure.travis-ci.org/frdmn/generator-frdmn-bootstrap.svg?branch=master)](http://travis-ci.org/frdmn/generator-frdmn-bootstrap) 
 
-## Installation
+> [Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using [gulp](http://gulpjs.com/) for the build process
 
-First, install [Yeoman](http://yeoman.io) and generator-frdmn-bootstrap using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+## Features
 
-```bash
-npm install -g yo
-npm install -g generator-frdmn-bootstrap
-```
+Please see our [gulpfile](app/templates/gulpfile.js) for up to date information on what we support.
 
-Then generate your new project:
+* CSS Autoprefixing
+* Automagically compile Sass with [libsass](http://libsass.org)
+* Map compiled CSS to source stylesheets with source maps
+* Awesome image optimization
 
-```bash
-yo frdmn-bootstrap
-```
+*For more information on what this generator can do for you, take a look at the [gulp plugins](app/templates/_package.json) used in our `package.json`.*
 
-## Getting To Know Yeoman
+## libsass
 
-Yeoman has a heart of gold. He&#39;s a person with feelings and opinions, but he&#39;s very easy to work with. If you think he&#39;s too opinionated, he can be easily convinced. Feel free to [learn more about him](http://yeoman.io/).
+Keep in mind that libsass is feature-wise not fully compatible with Ruby Sass. Check out [this](http://sass-compatibility.github.io) curated list of incompatibilities to find out which features are missing.
+
+If your favorite feature is missing and you really need Ruby Sass, you can always switch to [gulp-ruby-sass](https://github.com/sindresorhus/gulp-ruby-sass) and update the `styles` task in gulpfile accordingly.
+
+## Getting Started
+
+- Install dependencies: `npm install --global yo gulp bower`
+- Install the generator: `npm install --global generator-frdmn-bootstrap`
+- Run `yo frdmn-bootstrap` to scaffold your webapp
+- Run `gulp dev` to preview and watch for changes
+- Run `gulp` to build your webapp for production
+- Run `bower install --save <package>` to install frontend dependencies
+
+## Options
+
+_none_
 
 ## License
 
-MIT © [Jonas Friedmann](https://frd.mn)
-
-
-[npm-image]: https://badge.fury.io/js/generator-frdmn-bootstrap.svg
-[npm-url]: https://npmjs.org/package/generator-frdmn-bootstrap
-[travis-image]: https://travis-ci.org/frdmn/generator-frdmn-bootstrap.svg?branch=master
-[travis-url]: https://travis-ci.org/frdmn/generator-frdmn-bootstrap
-[daviddm-image]: https://david-dm.org/frdmn/generator-frdmn-bootstrap.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/frdmn/generator-frdmn-bootstrap
-[coveralls-image]: https://coveralls.io/repos/frdmn/generator-frdmn-bootstrap/badge.svg
-[coveralls-url]: https://coveralls.io/r/frdmn/generator-frdmn-bootstrap
+[MIT](LICENSE)
