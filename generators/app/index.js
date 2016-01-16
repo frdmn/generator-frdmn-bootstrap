@@ -15,6 +15,16 @@ module.exports = generators.Base.extend({
     ));
 
     var prompts = [{
+      type: 'input',
+      name: 'inputName',
+      message: 'Project name?',
+      default: _s.slugify(this.appname)
+    }, {
+      type: 'input',
+      name: 'inputVersion',
+      message: 'Project version?',
+      default: '1.0.0'
+    }, {
       type: 'checkbox',
       name: 'features',
       message: 'What would you like?',
@@ -35,6 +45,8 @@ module.exports = generators.Base.extend({
       // manually deal with the response, get back and store the results.
       // we change a bit this way of doing to automatically do this in the self.prompt() method.
       this.includeModernizr = hasFeature('includeModernizr');
+      this.inputName = answers.inputName;
+      this.inputVersion = answers.inputVersion;
 
       done();
     }.bind(this));
@@ -64,14 +76,19 @@ module.exports = generators.Base.extend({
     packageJSON: function () {
       this.fs.copyTpl(
         this.templatePath('_package.json'),
-        this.destinationPath('package.json')
+        this.destinationPath('package.json'),
+        {
+          inputName: this.inputName,
+          inputVersion: this.inputVersion,
+        }
       );
     },
 
     bower: function () {
 
       var bowerJson = {
-        name: _s.slugify(this.appname),
+        name: this.inputName,
+        version: this.inputVersion,
         private: true,
         ignore: [
           "node_modules",
