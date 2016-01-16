@@ -21,8 +21,14 @@ If your favorite feature is missing and you really need Ruby Sass, you can alway
 
 ## Getting Started
 
+(Don't want to submit this probably redundant generator to the NPM registry, thats why we link it locally instead for now.)
+
 - Install dependencies: `npm install --global yo gulp bower`
-- Install the generator: `npm install --global generator-frdmn-bootstrap`
+- Install the generator:  
+  `git clone https://github.com/frdmn/generator-frdmn-bootstrap /usr/local/src/generator-frdmn-bootstrap`  
+  `cd /usr/local/src/generator-frdmn-bootstrap`  
+  `npm install`  
+  `npm link`  
 - Run `yo frdmn-bootstrap` to scaffold your webapp
 - Run `gulp dev` to preview and watch for changes
 - Run `gulp` to build your webapp for production
