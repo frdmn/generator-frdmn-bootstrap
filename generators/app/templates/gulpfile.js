@@ -108,6 +108,7 @@ gulp.task('clean', function () {
 // Connect task to serve web and reload automatically
 gulp.task('connect', function() {
   $.connect.server({
+    root: '.',
     livereload: true
   });
 });
