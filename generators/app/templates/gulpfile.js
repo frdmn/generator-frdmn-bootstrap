@@ -92,8 +92,10 @@ gulp.task('watch', function () {
 // Clean task
 gulp.task('clean', function () {
   gulp.src([
-    dirs.js + '/build.js',
-    dirs.css + '/style.css'
+    dirs.css + '/style.css',
+    dirs.fonts + '/*',
+    dirs.images + '/*',
+    dirs.js + '/build.js'
   ], {read: false})
     .pipe($.clean());
 });
