@@ -50,14 +50,17 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(dirs.fonts + '/'));
 });
 
-// Concat JavaScript
-gulp.task('scripts', function () {
+// Copy JavaScripts (like modernizr)
+gulp.task('scripts:copy', function () {
 <% if (includeModernizr) { -%>
   // Copy modernizr from bower_components
   gulp.src([dirs.bower + '/modernizr/modernizr.js'])
       .pipe(gulp.dest(dirs.js + '/'));
 <% } -%>
+});
 
+// Concat JavaScript
+gulp.task('scripts', function () {
   // Process JavaScript files
   gulp.src([
     dirs.bower + '/jquery/dist/jquery.js',
@@ -101,5 +104,5 @@ gulp.task('clean', function () {
 });
 
 // Register default and dev task
-gulp.task('default', ['styles', 'fonts', 'scripts', 'imagemin'], function () {});
+gulp.task('default', ['styles', 'fonts', 'scripts:copy', 'scripts', 'imagemin'], function () {});
 gulp.task('dev', ['default', 'watch'], function () {});
