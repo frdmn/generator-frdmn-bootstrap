@@ -33,7 +33,8 @@ gulp.task('styles:dev', function () {
     .pipe($.sass().on('error', $.sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest(dirs.css));
+    .pipe(gulp.dest(dirs.css))
+    .pipe($.connect.reload());
 });
 
 // Compile sass for production (compressed)
@@ -73,7 +74,8 @@ gulp.task('scripts', function () {
   ])
   .pipe($.concat('build.js'))
   .pipe($.uglify())
-  .pipe(gulp.dest(dirs.js + '/'));
+  .pipe(gulp.dest(dirs.js + '/'))
+  .pipe($.connect.reload());
 });
 
 // Optimize images
@@ -103,6 +105,13 @@ gulp.task('clean', function () {
     .pipe($.clean());
 });
 
+// Connect task to serve web and reload automatically
+gulp.task('connect', function() {
+  $.connect.server({
+    livereload: true
+  });
+});
+
 // Register default and dev task
 gulp.task('default', ['styles', 'fonts', 'scripts:copy', 'scripts', 'imagemin'], function () {});
-gulp.task('dev', ['default', 'watch'], function () {});
+gulp.task('dev', ['default', 'connect', 'watch'], function () {});

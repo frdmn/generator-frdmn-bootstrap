@@ -9,6 +9,7 @@
 Please see our [gulpfile](app/templates/gulpfile.js) for up to date information on what we support.
 
 * CSS Autoprefixing
+* LiveReload support on file changes
 * Uglify (minify) JavScript
 * Autoprefix to support last 2 versions of current browsers
 * Automagically compile Sass with [libsass](http://libsass.org)
